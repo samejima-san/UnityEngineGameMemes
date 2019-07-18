@@ -38,8 +38,8 @@ public class Player : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        this.health = 3;
-        this.points = 0;
+       health = 3;
+       points = 0;
 		
 	}
 	
