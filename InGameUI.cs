@@ -14,6 +14,8 @@ public class InGameUI : MonoBehaviour
 
     // Use this for initialization
     void Start () {
+        player.GetComponent<Player>().points = 0;
+        player.GetComponent<Player>().health = 0;
         pointstext.text = ("Points: " + player.GetComponent<Player>().points);
         healthtext.text = ("Health:  " + player.GetComponent<Player>().health);
         zonetext.rectTransform.localScale.Set(x, x, x);
@@ -26,7 +28,7 @@ public class InGameUI : MonoBehaviour
         
 
         x += changeSpeed;
-        if (x <= .45f || x >= 2.5f)
+        if (x <= .45f || x >= 2.0f)
         {
            changeSpeed = changeSpeed * -1;
         }

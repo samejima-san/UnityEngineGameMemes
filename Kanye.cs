@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Kanye : MonoBehaviour
 {
-    private int health = 1;
     float speed = .025f;
     public Transform TargetObject;
     private Ray ray; // The ray
@@ -17,18 +16,11 @@ public class Kanye : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, TargetObject.position, speed);     
     }
 
-    private void Death()
-    {
-        if(this.health<=0)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
 
     private void OnCollisionEnter(Collision collision)
     {
-        this.health--;
+        player.GetComponent<Player>().loseHealth();
+        Destroy(this.gameObject);
     }
 
     public void isClicked()
@@ -54,8 +46,28 @@ public class Kanye : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        this.moveToPlayer();
-        this.isClicked();
-        this.Death();
+        if(player.GetComponent<Player>().points >= 0 && player.GetComponent<Player>().points < 25)
+        {
+            speed = .025f;
+        }
+        else if(player.GetComponent<Player>().points >= 25 && player.GetComponent<Player>().points < 50)
+        {
+            speed = .035f;
+        }
+        else if(player.GetComponent<Player>().points >= 50 && player.GetComponent<Player>().points < 125)
+        {
+            speed = .045f;
+        }
+        else if (player.GetComponent<Player>().points >= 125 && player.GetComponent<Player>().points < 200)
+        {
+            speed = .065f;
+        }
+        else
+        {
+            speed += .001f;
+        }
+
+        moveToPlayer();
+        isClicked();
     }
 }
