@@ -15,7 +15,7 @@ public class InGameUI : MonoBehaviour
     // Use this for initialization
     void Start () {
         player.GetComponent<Player>().points = 0;
-        player.GetComponent<Player>().health = 0;
+        player.GetComponent<Player>().health = 3;
         pointstext.text = ("Points: " + player.GetComponent<Player>().points);
         healthtext.text = ("Health:  " + player.GetComponent<Player>().health);
         zonetext.rectTransform.localScale.Set(x, x, x);
